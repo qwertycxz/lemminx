@@ -119,6 +119,10 @@ public class ClientCapabilitiesWrapper {
 		return v3Supported && isDynamicRegistrationSupported(capabilities.getWorkspace().getDidChangeWatchedFiles());
 	}
 
+	public boolean isExecuteCommandDynamicRegistrationSupported() {
+		return v3Supported && isDynamicRegistrationSupported(capabilities.getWorkspace().getExecuteCommand());
+	}
+
 	public boolean isLinkedEditingRangeDynamicRegistered() {
 		return v3Supported && isDynamicRegistrationSupported(getTextDocument().getLinkedEditingRange());
 	}
