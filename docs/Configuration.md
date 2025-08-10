@@ -2,20 +2,58 @@
 
 ## Client
 
-TODO...
+Start the server from jar or native executable:
 
+```sh
+java [options] -jar org.eclipse.lemminx.jar
+# or
+org.eclipse.lemminx [options]
 ```
-	java -classpath ... org.eclipse.lsp4xml.XMLServerLauncher
+
+### Environment Variables
+
+Environment variables can be used to configure the server. For example:
+
+```sh
+export HTTP_PROXY_HOST=localhost
+java -jar org.eclipse.lemminx.jar
+# or
+$env:HTTP_PROXY_HOST=localhost
+org.eclipse.lemminx.exe -Djdk.xml.maxOccur=20000
 ```
 
-## Existing Implementations
+* `$HTTP_PROXY_HOST`: The hostname of the HTTP proxy server.
+* `$HTTP_PROXY_PASSWORD`: The password to use for the HTTP proxy.
+* `$HTTP_PROXY_PORT`: The port number of the HTTP proxy server.
+* `$HTTP_PROXY_USER`: The user name to use for the HTTP proxy.
+* `$LEMMINX_DEBUG`: Enable debug logging for Lemminx.
 
-To see how current implementations of this language server send configurations,
-refer to [VSCode XML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml).
+### System Properties
 
-1. Go to preferences and set `xml.trace.server` to `verbose`
-2. With an XML file open, go to View -> Output -> XML Support (top right drop down menu)
-3. Ctrl + f, and search for 'workspace/didChangeConfiguration'
+System properties are options start with `-D`. For example:
+
+```sh
+java -Djdk.xml.maxOccur=20000 -jar org.eclipse.lemminx.jar
+# or
+org.eclipse.lemminx -Djdk.xml.maxOccur=20000
+```
+
+* `-Dhttp.proxyPassword=<string>`: The password to use for the HTTP proxy. Defaults from environment variable `HTTP_PROXY_PASSWORD`.
+* `-Dhttp.proxyUser=<string>`: The user name to use for the HTTP proxy. Defaults from environment variable `HTTP_PROXY_USER`.
+* `-Djava.home=<string>`: The Java installation directory.
+* `-Djava.runtime.name=<string>`: The name of the Java Runtime Environment.
+* `-Djava.vm.name=<string>`: The name of the Java Virtual Machine.
+* `-Djava.version=<string>`: The version of the Java Runtime Environment.
+* `-Djdk.xml.entityExpansionLimit=<integer>`: The maximum number of XML entities to expand. Defaults to `64000`.
+* `-Djdk.xml.maxOccur=<integer>`: The maximum number of XML elements to occur. Defaults to `5000`.
+* `-Dlemminx.workdir=<string>`: The working directory for Lemminx. Defaults to `{-Duser.home}/.lemminx`, `{-Duser.dir}/.lemminx` or `{$PWD}/.lemminx`.
+* `-Dlog.level=<all|info|warn|error|off>`: The logging level. Defaults to `info`.
+* `-Dos.arch=<string>`: The operating system architecture.
+* `-Dos.name=<string>`: The operating system name.
+* `-Dos.version=<string>`: The operating system version.
+* `-Duser.dir=<string>`: The user directory.
+* `-Duser.home=<string>`: The user home directory.
+* `-DwatchParentProcess=<boolean>`: Whether to watch the parent process for termination. Defaults to `true`.
 
 ## Settings
 
