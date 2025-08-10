@@ -55,6 +55,15 @@ org.eclipse.lemminx -Djdk.xml.maxOccur=20000
 * `-Duser.home=<string>`: The user home directory.
 * `-DwatchParentProcess=<boolean>`: Whether to watch the parent process for termination. Defaults to `true`.
 
+## Existing Implementations
+
+To see how current implementations of this language server send configurations,
+refer to [VSCode XML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml).
+
+1. Go to preferences and set `xml.trace.server` to `verbose`
+2. With an XML file open, go to View -> Output -> XML Support (top right drop down menu)
+3. Ctrl + f, and search for 'workspace/didChangeConfiguration'
+
 ## Settings
 
 Settings for **didChangeConfiguration** and **initializationOptions** must follow this JSON format:
@@ -303,4 +312,3 @@ Ability to enable/disable validation.
   Values: ["ignore", "hint", "info", "warning", "error"] 
 * **enabled:** True to enable all validation/diagnostics. Else false.
 * **schema:** True to enable all schema validation/diagnostics. Else false.  
-
